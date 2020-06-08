@@ -1,0 +1,67 @@
+
+<ui:composition template="master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<ui:define name="title">
+        .:Listado de Tabla :.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Listado Agentes </span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+		     
+		    <div class="row" align="center">
+		          <p:commandButton value="Nuevo" action="#{infectiousAgentController.newInfectious()}"
+		                           styleClass="btn btn-primary" ajax="false"> <!-- llamar al controller -->		            
+		          </p:commandButton>		    
+		    </div>
+		     
+			<p:dataTable id="lstInfectious" var="inf"
+				value="#{infectiousAgentController.listaInfectiousAgents}"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="10, 20, 30, 40" rows="10"
+				styleClass="table table-borderer" emptyMessage="No existen datos"
+				rowIndexVar="item" style="margin-bottom:0">
+
+				<p:column headerText="Id" sortBy="inf.idInfectiousAgents">
+					<h:outputText value="#{inf.idInfectiousAgents}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Agente"
+					sortBy="inf.descriptionInfectiousAgents">
+					<h:outputText value="#{inf.descriptionInfectiousAgents}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Tipo" sortBy="#{inf.typeInfectiousAgents}">
+					<h:outputText value="#{inf.typeInfectiousAgents}" />
+				</p:column>
+				
+				
+				<p:column headerText="Tiempo de Vida" sortBy="#{inf.timeInfectiousAgents}">
+				     <h:outputText value="#{inf.timeInfectiousAgents}"></h:outputText>
+				</p:column>
+				
+				<p:column headerText="Fecha de Aparición" sortBy="#{inf.appearanceDateInfectiousAgents}">
+				     <h:outputText value="#{inf.appearanceDateInfectiousAgents}">
+				        <f:convertDateTime pattern="dd-MM-yyyy"></f:convertDateTime>
+				     </h:outputText>
+				</p:column>
+								
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>

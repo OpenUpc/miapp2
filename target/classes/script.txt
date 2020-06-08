@@ -1,0 +1,9 @@
+create database appweb;
+use appweb;
+create table infectiousagent(
+    idInfectiousAgents integer auto_increment not null primary key, 
+    descriptionInfectiousAgents varchar(45),
+    typeInfectiousAgents varchar(45),
+    timeInfectiousAgents int,
+    appearanceDateInfectiousAgents date
+);
