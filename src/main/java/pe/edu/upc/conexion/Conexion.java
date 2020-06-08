@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class Conexion {
        protected static Connection oCn;
-       
+       //Appweb
        static {
 	         try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
